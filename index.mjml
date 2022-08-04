@@ -1,0 +1,27 @@
+<mjml>
+  <mj-head>
+    <mj-title>Daily Spotify Email</mj-title>
+    <mj-preview>[DATE/TIME]</mj-preview>
+
+  </mj-head>
+  <mj-body background-color="#E7E7E7" width="600px">
+    <mj-section full-width="full-width" background-color="black">
+      <mj-column width="100%">
+        <mj-text color="#ffffff" font-weight="bold" align="center" font-size="32px" padding="50px 0">
+          Good Morning, David
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column background-color="#111" padding="20px 0">
+        <mj-text color="#ffffff" font-weight="bold" align="center" text-transform="uppercase" font-size="16px" letter-spacing="1px" padding-top="30px">
+          current spotify podcasts
+          <br />
+          <span style="color: #979797; font-weight: 900">-</span>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+  </mj-body>
+</mjml>
