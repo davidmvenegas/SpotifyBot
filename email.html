@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./email.css">
+</head>
+<body>
+    <div class="main">
+        <header>
+            <h1>Daily Spotify Podcasts Email</h1>
+            <h3 id="currentDate"></h3>
+        </header>
+        <section class="overview-section">
+            <h4>You currently have:</h4>
+            <h2>5 Saved Episodes | 4 New Episodes</h2>
+        </section>
+        <section class="content-section">
+            <h4>NEW EPISODES</h4>
+            <div class="podcasts-box">
+
+                <div class="podcast">
+                    <div class="top-box">
+                        <img src="">
+                        <div class="right-of-image">
+                            <h2>TITLE - Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+                            <h4>ARTIST ● DATE ADDED ● LENGTH</h4>
+                        </div>
+                    </div>
+                    <div class="middle-box">
+                        <p class="summary">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit Temporibus, nulla quas deleniti exercitationem aliquid tempore dicta blanditiis assumenda nesciunt molestiae?
+                        </p>
+                    </div>
+                </div>
+
+                <div class="podcast">
+                    <div class="top-box">
+                        <img src="">
+                        <div class="right-of-image">
+                            <h2>TITLE - Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+                            <h4>ARTIST ● DATE ADDED ● LENGTH</h4>
+                        </div>
+                    </div>
+                    <div class="middle-box">
+                        <p class="summary">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit Temporibus, nulla quas deleniti exercitationem aliquid tempore dicta blanditiis assumenda nesciunt molestiae?
+                        </p>
+                    </div>
+                </div>
+
+                <div class="podcast">
+                    <div class="top-box">
+                        <img src="">
+                        <div class="right-of-image">
+                            <h2>TITLE - Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+                            <h4>ARTIST ● DATE ADDED ● LENGTH</h4>
+                        </div>
+                    </div>
+                    <div class="middle-box">
+                        <p class="summary">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit Temporibus, nulla quas deleniti exercitationem aliquid tempore dicta blanditiis assumenda nesciunt molestiae?
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Adding today's date
+        document.getElementById('currentDate')
+        .innerHTML = new Date()
+        .toLocaleDateString("en-US", {
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        })
+
+
+    </script>
+</body>
+</html>
