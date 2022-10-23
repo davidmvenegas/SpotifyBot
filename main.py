@@ -1,43 +1,30 @@
-from email.message import EmailMessage
-from multiprocessing import context
-from datetime import datetime
-import schedule
 import smtplib
-import time
-import ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
 
 def main():
     email_sender = 'spotifypodcastbot@gmail.com'
     email_password = 'jornxxaujitbnmsa'
-    email_reciver = 'venegasdavidm@gmail.com'
+    email_receiver = 'venegasdavidm@gmail.com'
 
-    now = datetime.now()
-    time = (now.strftime("%I:%M%p"))
+    MESSAGE = MIMEMultipart('alternative')
+    MESSAGE['subject'] = 'Spotify Podcast Bot'
+    MESSAGE['From'] = email_sender
+    MESSAGE['To'] = email_receiver
 
-    subject = "TEST SUBJECT"
-    body = """
-        THIS IS A TEST BODY
-        Sent at {time}
-    """.format(time=time)
+    with open('./email.html', 'r', encoding='utf-8') as html_file:
+        BODY = html_file.read()
 
-    em = EmailMessage()
-    em['From'] = email_sender
-    em['To'] = email_reciver
-    em['subject'] = subject
-    em.set_content(body)
+    HTML_BODY = MIMEText(BODY, 'html')
+    MESSAGE.attach(HTML_BODY)
 
-    context = ssl.create_default_context()
+    server = smtplib.SMTP('smtp.gmail.com:587')
+    server.starttls()
+    server.login(email_sender, email_password)
+    server.sendmail(email_sender, email_receiver, MESSAGE.as_string())
+    server.quit()
 
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
-        smtp.login(email_sender, email_password)
-        smtp.sendmail(email_sender, email_reciver, em.as_string())
-        print("message sent")
+    print("email sent")
 
-    return
-
-schedule.every().day.at("08:00").do(main)
-
-while True:
-    schedule.run_pending()
-    print('waiting...')
-    time.sleep(5)
+main()
