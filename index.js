@@ -16,6 +16,8 @@ const getToken = async () => {
     return token
 }
 
+getToken()
+
 const getShows = async (token) => {
     console.log(token)
     const result = await fetch(`https://api.spotify.com/v1/me/shows?limit=50`, {
