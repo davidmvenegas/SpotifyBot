@@ -1,11 +1,12 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 
-def main():
+def send_email(**email_variables):
     email_sender = 'spotifypodcastbot@gmail.com'
-    email_password = 'jornxxaujitbnmsa'
+    email_password = 'atycuopjnosvuplc'
     email_receiver = 'venegasdavidm@gmail.com'
 
     MESSAGE = MIMEMultipart('alternative')
@@ -13,9 +14,14 @@ def main():
     MESSAGE['From'] = email_sender
     MESSAGE['To'] = email_receiver
 
-    with open('./email.html', 'r', encoding='utf-8') as html_file:
-        BODY = html_file.read()
+    env = Environment(
+        loader=FileSystemLoader('templates'),
+        autoescape=select_autoescape(['html', 'xml'])
+    )
 
+    template = env.get_template('email.html')
+
+    BODY = template.render(**email_variables)
     HTML_BODY = MIMEText(BODY, 'html')
     MESSAGE.attach(HTML_BODY)
 
@@ -25,6 +31,24 @@ def main():
     server.sendmail(email_sender, email_receiver, MESSAGE.as_string())
     server.quit()
 
-    print("email sent")
+    print("Email sent successfully")
 
-main()
+
+def get_spotify_data():
+    return {
+        'saved_episodes': '44',
+        'new_episodes': '99',
+    }
+
+
+def run_bot():
+    data = get_spotify_data()
+    print(data)
+
+    # send_email(
+    #     saved_episodes=data['saved_episodes'],
+    #     new_episodes=data['new_episodes'],
+    # )
+
+
+run_bot()

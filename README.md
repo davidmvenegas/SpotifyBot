@@ -1,1 +1,1 @@
-# SpotifyEmailBot
+# Spotify Bot
